@@ -5,27 +5,39 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { MongoClient, ObjectId } = require("mongodb");
 
-
-
-
+const PORT = process.env.PORT || 5000;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const app = express();
-app.use(cors());
+
+
+
+
+// app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true // If you are using cookies
+}));
 app.use(express.json());
 
 
+// app.use(cors());
+// app.use(express.json());
 
 
 
 
-
-const PORT = process.env.PORT || 5000;
-const JWT_SECRET = process.env.JWT_SECRET;
 // console.log(JWT_SECRET)
 const uri = "mongodb+srv://bldm:bldm1234@cluster0.gvvjm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const client = new MongoClient(uri);
 
-
+// const client = new MongoClient(uri, {
+//     serverApi: {
+//         version: ServerApiVersion.v1,
+//         strict: true,
+//         deprecationErrors: true,
+//     },
+// });
 
 
 
@@ -181,5 +193,5 @@ app.get("/", (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log("Server running on port 500");
 });
