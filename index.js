@@ -15,7 +15,7 @@ const app = express();
 
 // app.use(cors());
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://quiz-app-3c08a.web.app',
     credentials: true // If you are using cookies
 }));
 app.use(express.json());
